@@ -10,4 +10,10 @@ sudo su -s /bin/bash hosst
 virtualenv -p python3 /srv/homeassistant
 source /srv/homeassistant/bin/activate
 pip3 install --upgrade homeassistant
-sudo -u hosst -H /srv/homeassistant/bin/hass
+sudo cp hass-daemon /etc/init.d/hass-daemon
+sudo chmod +x /etc/init.d/hass-daemon
+sudo update-rc.d hass-daemon defaults
+sudo service hass-daemon install
+sudo service hass-daemon start
+
+#sudo -u hosst -H /srv/homeassistant/bin/hass
